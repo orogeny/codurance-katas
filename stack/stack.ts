@@ -19,8 +19,16 @@ class Stack<T> {
     return size;
   }
 
+  get isEmpty(): boolean {
+    return this._top === null;
+  }
+
   peek() {
     return this._top;
+  }
+
+  pop(): [T | null, Stack<T>] {
+    return [this._top, this._previous ?? new Stack()];
   }
 
   push(value: T) {
