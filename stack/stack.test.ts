@@ -54,3 +54,23 @@ describe("stack - toArray()", () => {
     expect(stack.push(42).push(84).toArray()).toEqual([84, 42]);
   });
 });
+
+describe("stack - peek()", () => {
+  test("peeking empty stack should return null", () => {
+    const stack = new Stack();
+
+    expect(stack.peek()).toBeNull();
+  });
+
+  test("peeking initialized stack should return initial value", () => {
+    const stack = new Stack(42);
+
+    expect(stack.peek()).toBe(42);
+  });
+
+  test("peeking stack should return top value", () => {
+    const stack = new Stack();
+
+    expect(stack.push(42).push(84).push(168).peek()).toBe(168);
+  });
+});

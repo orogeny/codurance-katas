@@ -19,6 +19,10 @@ class Stack<T> {
     return size;
   }
 
+  peek() {
+    return this._top;
+  }
+
   push(value: T) {
     const newStack = new Stack(value);
 
