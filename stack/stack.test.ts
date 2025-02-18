@@ -1,7 +1,7 @@
 import { describe, expect, test } from "bun:test";
 import { Stack } from "./stack";
 
-describe("stack", () => {
+describe("stack - size", () => {
   test("empty stack should have size 0", () => {
     const stack = new Stack();
 
@@ -20,6 +20,16 @@ describe("stack", () => {
     expect(stack.push(42).size).toBe(1);
   });
 
+  test("push to pre-seeded stack should have size 2", () => {
+    const stack = new Stack(42);
+
+    const newStack = stack.push(84);
+
+    expect(stack.push(84).size).toBe(2);
+  });
+});
+
+describe("stack - toArray()", () => {
   test("empty stack should return empty array", () => {
     const stack = new Stack();
 
@@ -43,12 +53,24 @@ describe("stack", () => {
 
     expect(stack.push(42).push(84).toArray()).toEqual([84, 42]);
   });
+});
 
-  test("push to pre-seeded stack should have size 2", () => {
+describe("stack - peek()", () => {
+  test("peeking empty stack should return null", () => {
+    const stack = new Stack();
+
+    expect(stack.peek()).toBeNull();
+  });
+
+  test("peeking initialized stack should return initial value", () => {
     const stack = new Stack(42);
 
-    const newStack = stack.push(84);
+    expect(stack.peek()).toBe(42);
+  });
 
-    expect(stack.push(84).size).toBe(2);
+  test("peeking stack should return top value", () => {
+    const stack = new Stack();
+
+    expect(stack.push(42).push(84).push(168).peek()).toBe(168);
   });
 });
