@@ -7,4 +7,10 @@ describe("stack", () => {
 
     expect(stack.size).toBe(0);
   });
+
+  test("new stack should have 1 element", () => {
+    const stack = new Stack(1);
+
+    expect(stack.size).toBe(1);
+  });
 });
