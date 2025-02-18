@@ -7,9 +7,39 @@ class Stack<T> {
   }
 
   get size(): number {
-    if (this._top === null) return 0;
-    if (this._previous === null) return 1;
-    return this._previous.size + 1;
+    let size = 0;
+
+    let current: Stack<T> | null = this;
+
+    while (current !== null && current._top !== null) {
+      size += 1;
+      current = current._previous;
+    }
+
+    return size;
+  }
+
+  push(value: T) {
+    const newStack = new Stack(value);
+
+    if (this._top !== null) {
+      newStack._previous = this;
+    }
+
+    return newStack;
+  }
+
+  toArray() {
+    const result: T[] = [];
+
+    let current: Stack<T> | null = this;
+
+    while (current !== null && current._top !== null) {
+      result.push(current._top);
+      current = current._previous;
+    }
+
+    return result;
   }
 }
 
