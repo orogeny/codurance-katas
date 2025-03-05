@@ -21,5 +21,5 @@ function convertPoint(size: Point) {
   };
 }
 
-export type { Point };
 export { convertIndex, convertPoint };
+export type { Point };
