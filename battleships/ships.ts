@@ -10,12 +10,17 @@ const SHIPS: Ship[] = [
 
 type Orientation = "h" | "v";
 
-function moorShip(size: Point, fleet: Array<Set<number>>) {
+function moorShip(size: Point) {
   const [width, height] = size;
 
   const toIndex = convertPoint(size);
 
-  return function (type: string, location: Point, orientation: Orientation) {
+  return function (
+    type: string,
+    location: Point,
+    orientation: Orientation,
+    fleet: Array<Set<number>>
+  ) {
     const [x, y] = location;
 
     const ship = SHIPS.find((s) => s.type === type);
